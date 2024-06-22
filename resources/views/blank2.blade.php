@@ -1,4 +1,4 @@
-@extends('layout.main_front')
+@extends('layout.main')
 
 @section('title_page','Blank')
 @section('title','Blank Page')
