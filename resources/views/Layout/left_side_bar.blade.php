@@ -29,7 +29,7 @@
                     <li>
                         <a href="../../index.html">
                             <i class="material-icons">home</i>
-                            <span>Home</span>
+                            <span>Beranda</span>
                         </a>
                     </li>
                     <li>
@@ -41,7 +41,7 @@
                     <li>
                         <a href="../../pages/helper-classes.html">
                             <i class="material-icons">event_seat</i>
-                            <span>Inventori</span>
+                            <span>Barang</span>
                         </a>
                     </li>
                     <li class="active">

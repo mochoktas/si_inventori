@@ -11,3 +11,9 @@ Route::get('/', function () {
 Route::get('/backend', function () {
     return view('blank2');
 });
+
+// controller resource
+Route::resources([
+    'tempat' => TempatController::class,
+    'barang' => BarangController::class,
+]);
