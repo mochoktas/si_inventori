@@ -26,52 +26,23 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li>
-                        <a href="../../index.html">
+                    <li class="{{request ()->is('backend') ? 'active' :'' }}">
+                        <a href="/backend">
                             <i class="material-icons">home</i>
                             <span>Beranda</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="../../pages/typography.html">
+                    <li class="{{request ()->is('tempat') ? 'active' :'' }}">
+                        <a href="/tempat">
                             <i class="material-icons">place</i>
                             <span>Tempat</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="/barang">
                             <i class="material-icons">event_seat</i>
                             <span>Barang</span>
                         </a>
-                    </li>
-                    <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">content_copy</i>
-                            <span>Example Pages</span>
-                        </a>
-                        <ul class="ml-menu">
-                            <li>
-                                <a href="../../pages/examples/profile.html">Profile</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/examples/sign-in.html">Sign In</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/examples/sign-up.html">Sign Up</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/examples/forgot-password.html">Forgot Password</a>
-                            </li>
-                            <li class="active">
-                                <a href="../../pages/examples/blank.html">Blank Page</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/examples/404.html">404 - Not Found</a>
-                            </li>
-                            <li>
-                                <a href="../../pages/examples/500.html">500 - Server Error</a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>

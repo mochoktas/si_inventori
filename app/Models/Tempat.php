@@ -13,8 +13,7 @@ class Tempat extends Model
 
     protected $fillable = [
         'nama',
-        'alamat',
-        'deskripsi'
+        'alamat'
     ];
 
     public function inventori(): HasMany

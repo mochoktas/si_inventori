@@ -7,6 +7,15 @@
 <!-- Select Plugin Js -->
 <script src="{{asset('assets/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
 
+<!-- Jquery Validation Plugin Css -->
+<script src="{{asset('assets/plugins/jquery-validation/jquery.validate.js')}}"></script>
+
+<!-- JQuery Steps Plugin Js -->
+<script src="{{asset('assets/plugins/jquery-steps/jquery.steps.js')}}"></script>
+
+<!-- Sweet Alert Plugin Js -->
+<script src="{{asset('assets/plugins/sweetalert/sweetalert.min.js')}}"></script>
+
 <!-- Slimscroll Plugin Js -->
 <script src="{{asset('assets/plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
 
