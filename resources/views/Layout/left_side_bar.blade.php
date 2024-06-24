@@ -38,10 +38,16 @@
                             <span>Tempat</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{request ()->is('barang') ? 'active' :'' }}">
                         <a href="/barang">
                             <i class="material-icons">event_seat</i>
                             <span>Barang</span>
+                        </a>
+                    </li>
+                    <li class="{{request ()->is('inventori') ? 'active' :'' }}">
+                        <a href="/inventori">
+                            <i class="material-icons">account_balance</i>
+                            <span>Inventori</span>
                         </a>
                     </li>
                 </ul>

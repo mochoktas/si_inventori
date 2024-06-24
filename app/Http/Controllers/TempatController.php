@@ -35,14 +35,14 @@ class TempatController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         //
         Tempat::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat
         ]);
-        return redirect()->route('tempat.index');
+        return redirect()->route('tempat.index')->withSuccess('data berhasil ditambah');
     }
 
     /**
@@ -72,7 +72,7 @@ class TempatController extends Controller
         $tempat->alamat = $request->alamat;
         $tempat->save();
 
-        return redirect()->route('tempat.index');
+        return redirect()->route('tempat.index')->withSuccess('data berhasil diubah');
     }
 
     /**
@@ -83,6 +83,6 @@ class TempatController extends Controller
         //
         $tempat->delete();
 
-        return redirect()->route('tempat.index');
+        return redirect()->route('tempat.index')->withSuccess('data berhasil dihapus');
     }
 }

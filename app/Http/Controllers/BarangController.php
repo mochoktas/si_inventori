@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Barang;
 
 class BarangController extends Controller
 {
@@ -12,6 +13,8 @@ class BarangController extends Controller
     public function index()
     {
         //
+        $barang = Barang::all();
+        return view('barang.index',compact('barang'));
     }
 
     /**
@@ -20,6 +23,7 @@ class BarangController extends Controller
     public function create()
     {
         //
+        return view('barang.create');
     }
 
     /**
@@ -28,6 +32,10 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        Barang::create([
+            'nama' => $request->nama
+        ]);
+        return redirect()->route('barang.index')->withSuccess('data berhasil ditambah');
     }
 
     /**
@@ -41,24 +49,32 @@ class BarangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Barang $barang)
     {
         //
+        return view('barang.edit',compact('barang'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Barang $barang)
     {
         //
+        $barang->nama = $request->nama;
+        $barang->save();
+
+        return redirect()->route('barang.index')->withSuccess('data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Barang $barang)
     {
         //
+        $barang->delete();
+
+        return redirect()->route('barang.index')->withSuccess('data berhasil dihapus');
     }
 }

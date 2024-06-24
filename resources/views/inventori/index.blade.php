@@ -1,23 +1,24 @@
 @extends('layout.main')
 
-@section('title_page','Tempat')
-@section('title','Tempat')
+@section('title_page','Inventori')
+@section('title','Inventori')
 @section('content')
-        @session('success')
-            <div class="alert alert-success" role="alert">
-                {{ $value }}
-            </div>
-        @endsession
+            @session('success')
+                <div class="alert alert-success" role="alert">
+                    {{ $value }}
+                </div>
+            @endsession
+
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data Tempat
+                                Data Inventori
                             </h2>
                             <ul class="header-dropdown m-r-0">
 								<li>
-									<a href="{{ route('tempat.create') }}">
+									<a href="{{ route('inventori.create') }}">
 										<i class="material-icons">add</i>
 									</a>
 								</li>
@@ -28,17 +29,19 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
+                                        <th>Tempat</th>
+                                        <th>Nama Barang</th>
+                                        <th>Stok</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($tempat as $data)
+                                    @forelse($inventori as $data)
                                     <tr>
-                                        <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->alamat }}</td>
+                                        <th scope="row">1</th>
+                                        <td>{{ $data->tempat->nama }}</td>
+                                        <td>{{ $data->barang->nama }}</td>
+                                        <td>{{ $data->stok }}</td>
                                         <td>
                                             <form action="{{ route('tempat.destroy', $data->tempat_id) }}" method="post">
                                                 @csrf

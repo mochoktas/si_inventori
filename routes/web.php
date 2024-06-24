@@ -20,4 +20,7 @@ use App\Http\Controllers\TempatController;
 Route::resource('tempat', TempatController::class);
 Route::get('/', [TempatController::class, 'index2']);
 
+use App\Http\Controllers\InventoriController;
+Route::resource('inventori', InventoriController::class);
+
 
