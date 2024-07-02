@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tempat;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class TempatController extends Controller
 {
@@ -38,10 +40,36 @@ class TempatController extends Controller
     public function store(Request $request)
     {
         //
-        Tempat::create([
-            'nama' => $request->nama,
-            'alamat' => $request->alamat
+        // $request->validate([
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        // $imageName = time().'.'.$request->image->extension();
+        // $request->image->move(public_path('images'), $imageName);
+        // $image = Str::replace('data:image/jpeg;base64,', '', $request->image);
+        // $image = Str::replace(' ', ' + ', $image);
+        // $imageName = time().'.'.$request->image;
+        // dd($imageName);
+        // Storage::disk('public')->put($imageName, base64_decode($image));
+        
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        // dd($request);
+        $imageName = time().'.'.$request->image->extension();
+        // dd($imageName);
+        $request->image->move(public_path('images'), $imageName);
+        $tempat = new Tempat();
+        $tempat->nama = $request->nama;
+        $tempat->alamat = $request->alamat;
+        $tempat->image = 'images/'.$imageName;
+        $tempat->save();
+        // Tempat::create([
+        //     'nama' => $request->nama,
+        //     'alamat' => $request->alamat,
+        //     'image' => $imageName
+        // ]);
         return redirect()->route('tempat.index')->withSuccess('data berhasil ditambah');
     }
 
@@ -68,6 +96,12 @@ class TempatController extends Controller
     public function update(Request $request, Tempat $tempat)
     {
         //
+        if ($request->image != "") {
+            $filedeleted = unlink(public_path($tempat->image));
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $tempat->image = 'images/'.$imageName;
+        }
         $tempat->nama = $request->nama;
         $tempat->alamat = $request->alamat;
         $tempat->save();
@@ -81,6 +115,7 @@ class TempatController extends Controller
     public function destroy(Tempat $tempat)
     {
         //
+        $filedeleted = unlink(public_path($tempat->image));
         $tempat->delete();
 
         return redirect()->route('tempat.index')->withSuccess('data berhasil dihapus');

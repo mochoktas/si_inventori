@@ -34,6 +34,11 @@
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>
                                 </div>
+                                <div class="form-group form-float">
+                                        <label class="form-label">Foto</label>
+                                        <img src="{{ asset($tempat->image) }}" height="100" width="100"  alt="{{ $tempat->nama }}">
+                                        <input type="file" name="image" id="image" accept="image/*">
+                                </div>
                                 
                                 <button class="btn btn-primary waves-effect" type="submit">Simpan</button>
                             </form>

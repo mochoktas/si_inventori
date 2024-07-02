@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('inventori', function (Blueprint $table) {
             $table->bigInteger('inventori_id')->primary()->autoIncrement();
             $table->bigInteger('barang_id');
-            $table->bigInteger('tempat_id');
-            $table->bigInteger('stok');
             $table->foreign('barang_id')->references('barang_id')->on('barang');
-            $table->foreign('tempat_id')->references('tempat_id')->on('tempat');
+            $table->bigInteger('team_id');
+            $table->foreign('team_id')->references('team_id')->on('team');
+            $table->string('kondisi', length: 20)->nullable();
+            $table->string('sn', length: 100)->nullable();
+            $table->string('merk', length: 100)->nullable();
+            $table->date('tahun_pembelian')->nullable();
         });
     }
 

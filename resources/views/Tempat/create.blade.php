@@ -3,7 +3,15 @@
 @section('title_page','Tempat')
 @section('title','Tempat')
 @section('content')
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -18,7 +26,7 @@
 							</ul>
                         </div>
                         <div class="body">
-                            <form id="tempat" action="{{ route('tempat.store') }}" method="POST">
+                            <form id="tempat" action="{{ route('tempat.store') }}"  method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -34,7 +42,10 @@
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>
                                 </div>
-                                
+                                <div class="form-group form-float">
+                                        <label class="form-label">Foto</label>
+                                        <input type="file" name="image" id="image" accept="image/*" required>
+                                </div>
                                 <button class="btn btn-primary waves-effect" type="submit">Simpan</button>
                             </form>
                         </div>

@@ -13,12 +13,13 @@ class Tempat extends Model
 
     protected $fillable = [
         'nama',
-        'alamat'
+        'alamat',
+        'image'
     ];
 
-    public function inventori(): HasMany
+    public function users(): HasMany
     {
-        return $this->hasMany(Inventori::class);
+        return $this->hasMany(User::class);
     }
 
     public $timestamps = false;

@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/backend', function () {
     return view('blank2');
 });
+Route::get('/login', function () {
+    return view('Auth.login');
+});
 
 // controller resource
 use App\Http\Controllers\BarangController;
