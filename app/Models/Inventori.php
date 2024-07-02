@@ -17,9 +17,9 @@ class Inventori extends Model
         'stok'
     ];
 
-    public function tempat(): BelongsTo
+    public function team(): BelongsTo
     {
-        return $this->belongsTo(Tempat::class, 'tempat_id', 'tempat_id');
+        return $this->belongsTo(Team::class, 'team_id', 'team_id');
     }
 
     public function barang(): BelongsTo

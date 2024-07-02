@@ -38,6 +38,18 @@
                             <span>Tempat</span>
                         </a>
                     </li>
+                    <li class="{{request ()->is('user') ? 'active' :'' }}">
+                        <a href="/user">
+                            <i class="material-icons">person</i>
+                            <span>User</span>
+                        </a>
+                    </li>
+                    <li class="{{request ()->is('team') ? 'active' :'' }}">
+                        <a href="/team">
+                            <i class="material-icons">group</i>
+                            <span>Team</span>
+                        </a>
+                    </li>
                     <li class="{{request ()->is('barang') ? 'active' :'' }}">
                         <a href="/barang">
                             <i class="material-icons">event_seat</i>

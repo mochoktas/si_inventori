@@ -17,9 +17,36 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'nama',
+        'email_pribadi',
         'password',
+        'jobdesk',
+        'data_yang_kurang',
+        'pendidikan',
+        'nik_ta',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'alamat',
+        'no_kk',
+        'no_ktp',
+        'no_hp_teknisi',
+        'no_hp_keluarga',
+        'nama_keluarga_yang_bida_dihubungi',
+        'nama_ibu',
+        'tanggal_masuk',
+        'bpjs_ketenagakerjaan',
+        'bpjs_kesehatan',
+        'merk_kendaraan',
+        'nopol_kendaraan',
+        'baju',
+        'sepatu',
+        'celana',
+        'crew_id',
+        'labourcode',
+        'telegram_id',
+        'username',
+        'role',
+        'tempat_id'
     ];
 
     /**
@@ -43,5 +70,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function tempat(): BelongsTo
+    {
+        return $this->belongsTo(Tempat::class, 'tempat_id', 'tempat_id');
     }
 }
