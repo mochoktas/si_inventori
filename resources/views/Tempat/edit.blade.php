@@ -22,14 +22,14 @@
                                 @method("PUT")
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="nama" max="100" required value="{{ $tempat->nama }}">
+                                        <input type="text" class="form-control" name="nama" maxlength="100" required value="{{ $tempat->nama }}">
                                         <label class="form-label">Nama</label>
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="alamat" max="100" required value="{{ $tempat->alamat }}">
+                                        <input type="text" class="form-control" name="alamat" maxlength="100" required value="{{ $tempat->alamat }}">
                                         <label class="form-label">Alamat</label>
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>

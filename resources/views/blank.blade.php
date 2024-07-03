@@ -11,7 +11,7 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
 									@forelse($tempat as $data)
-                                    <div class="item {{($loop->iteration==1)? 'active show':''}}">
+                                    <div class="item {{($loop->iteration==1)? 'active':''}}">
 										<div class="align-center">
 											<a href="/backend">
                                         	<img src="{{asset($data->image)}}" height="800px"/>

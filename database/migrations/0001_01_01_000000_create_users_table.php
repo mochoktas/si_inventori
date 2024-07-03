@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('no_ktp', length: 16)->nullable();
             $table->string('no_hp_teknisi', length: 15)->nullable();
             $table->string('no_hp_keluarga', length: 15)->nullable();
-            $table->string('nama_keluarga_yang_bida_dihubungi', length: 100)->nullable();
+            $table->string('nama_keluarga_yang_bisa_dihubungi', length: 100)->nullable();
             $table->string('nama_ibu', length: 100)->nullable();
             $table->date('tanggal_masuk')->nullable();
             $table->string('bpjs_ketenagakerjaan', length: 11)->nullable();

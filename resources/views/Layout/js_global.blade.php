@@ -22,11 +22,24 @@
 <!-- Waves Effect Plugin Js -->
 <script src="{{asset('assets/plugins/node-waves/waves.js')}}"></script>
 
+<!-- Autosize Plugin Js -->
+<script src="{{asset('assets/plugins/autosize/autosize.js')}}"></script>
+
+<!-- Moment Plugin Js -->
+<script src="{{asset('assets/plugins/momentjs/moment.js')}}"></script>
+
 <!-- Custom Js -->
 <script src="{{asset('assets/js/admin.js')}}"></script>
+<script src="{{asset('assets/js/pages/forms/basic-form-elements.js')}}"></script>
 
 <!-- Demo Js -->
 <script src="{{asset('assets/js/demo.js')}}"></script>
+
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="{{asset('assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+
+<!-- Bootstrap Datepicker Plugin Js -->
+<script src="{{asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
 
 <!-- Dropzone Plugin Js -->
 <!-- <script src="{{asset('assets/plugins/dropzone/dropzone.js')}}"></script> -->

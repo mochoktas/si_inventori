@@ -22,7 +22,7 @@
                                 @method("PUT")
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="nama" max="100" required value="{{ $barang->nama }}">
+                                        <input type="text" class="form-control" name="nama" maxlength="100" required value="{{ $barang->nama }}">
                                         <label class="form-label">Nama</label>
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>

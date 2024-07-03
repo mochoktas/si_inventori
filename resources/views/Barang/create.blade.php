@@ -22,7 +22,7 @@
                                 @csrf
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="nama" max="100" required>
+                                        <input type="text" class="form-control" name="nama" maxlength="100" required>
                                         <label class="form-label">Nama</label>
                                     </div>
                                     <div class="help-info">Max. 100 characters</div>
