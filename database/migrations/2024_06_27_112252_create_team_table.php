@@ -15,11 +15,11 @@ return new class extends Migration
             $table->bigInteger('team_id')->primary()->autoIncrement();
             $table->string('nama', length: 100);
             $table->unsignedBigInteger('user_id_1')->nullable();
-            $table->foreign('user_id_1')->references('id')->on('users');
+            $table->foreign('user_id_1')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('user_id_2')->nullable();
-            $table->foreign('user_id_2')->references('id')->on('users');
+            $table->foreign('user_id_2')->references('id')->on('users')->onDelete('cascade');
             $table->bigInteger('tempat_id');
-            $table->foreign('tempat_id')->references('tempat_id')->on('tempat');
+            $table->foreign('tempat_id')->references('tempat_id')->on('tempat')->onDelete('cascade');
         });
     }
 

@@ -38,3 +38,13 @@ Route::delete('user/delete/{user}', [UserController::class, 'destroy'])->name('u
 Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('user/update/{user}', [UserController::class, 'update'])->name('user.update');
 
+use App\Http\Controllers\TeamController;
+Route::get('team', [TeamController::class, 'index'])->name('team.index');
+Route::get('team/{tempat}', [TeamController::class, 'index2'])->name('team.index2');
+Route::get('team/create/{tempat}', [TeamController::class, 'create'])->name('team.create');
+Route::post('team/create/store', [TeamController::class, 'store'])->name('team.store');
+Route::delete('team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
+Route::get('team/edit/{team}', [TeamController::class, 'edit'])->name('team.edit');
+Route::put('team/update/{team}', [TeamController::class, 'update'])->name('team.update');
+// Route::get('/getUser',[TeamController::class,'getUser'])->name('getUser');
+

@@ -41,5 +41,9 @@
 <!-- Bootstrap Datepicker Plugin Js -->
 <script src="{{asset('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
 
+<!-- Select Plugin Js -->
+<script src="{{asset('assets/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
+
+
 <!-- Dropzone Plugin Js -->
 <!-- <script src="{{asset('assets/plugins/dropzone/dropzone.js')}}"></script> -->

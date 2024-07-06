@@ -52,13 +52,18 @@ class UserController extends Controller
         $tgl_lahir2 = date('Y-m-d', strtotime($request->tgl_lahir));
         $tgl_masuk2 = date('Y-m-d', strtotime($request->tgl_masuk));
         // dd($tgl_lahir2);
-        
+        if ($request->role == "") {
+            $role = 1;
+        }else {
+            $role = $request->role;
+        }
+        // dd($role);
         User::create([
             'nama' => $request->nama,
             'email_pribadi' => $request->email_pribadi,
             'password' => Hash::make($request->password),
             'tempat_id' => $request->tempat_id,
-            'role' => $request->role,
+            'role' => $role,
             'jobdesk'=> $request->jobdesk,
             'data_yang_kurang' => $request->data_yang_kurang,
             'pendidikan' => $request->pendidikan,

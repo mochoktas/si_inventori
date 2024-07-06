@@ -19,5 +19,8 @@
 <!-- Bootstrap DatePicker Css -->
 <link href="{{asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
 
+<!-- Bootstrap Select Css -->
+<link href="{{asset('assets/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
+
 <!-- Dropzone Css -->
 <!-- <link href="{{asset('assets/plugins/dropzone/dropzone.css')}}" rel="stylesheet"> -->

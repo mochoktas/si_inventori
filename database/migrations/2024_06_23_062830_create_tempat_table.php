@@ -20,7 +20,7 @@ return new class extends Migration
         });
         Schema::table('users', function (Blueprint $table) {
             $table->bigInteger('tempat_id');
-            $table->foreign('tempat_id')->references('tempat_id')->on('tempat');
+            $table->foreign('tempat_id')->references('tempat_id')->on('tempat')->onDelete('cascade');
         });
     }
 

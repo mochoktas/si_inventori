@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('inventori', function (Blueprint $table) {
             $table->bigInteger('inventori_id')->primary()->autoIncrement();
             $table->bigInteger('barang_id');
-            $table->foreign('barang_id')->references('barang_id')->on('barang');
+            $table->foreign('barang_id')->references('barang_id')->on('barang')->onDelete('cascade');
             $table->bigInteger('team_id');
-            $table->foreign('team_id')->references('team_id')->on('team');
+            $table->foreign('team_id')->references('team_id')->on('team')->onDelete('cascade');
             $table->string('kondisi', length: 20)->nullable();
             $table->string('sn', length: 100)->nullable();
             $table->string('merk', length: 100)->nullable();
