@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\InventoriController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\TempatController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeamController;
 // test front end
 // Route::get('/', function () {
 //     return view('blank');
@@ -16,20 +21,30 @@ Route::get('/backend', function () {
 // });
 
 // controller resource
-use App\Http\Controllers\BarangController;
+
 Route::resource('barang', BarangController::class);
 
-use App\Http\Controllers\TempatController;
+
 Route::resource('tempat', TempatController::class);
-Route::get('/', [TempatController::class, 'index2']);
+Route::get('/', [TempatController::class, 'index2'])->name('dashboard');
+// Route::get('/', [TempatController::class, 'index2']);
 
-use App\Http\Controllers\InventoriController;
-Route::resource('inventori', InventoriController::class);
 
-use App\Http\Controllers\AuthController;
+// Route::resource('inventori', InventoriController::class);
+Route::get('inventori', [InventoriController::class, 'index'])->name('inventori.index');
+Route::get('inventori/{tempat}', [InventoriController::class, 'index2'])->name('inventori.index2');
+Route::get('inventori/team/{team}', [InventoriController::class, 'index3'])->name('inventori.index3');
+Route::get('inventori/create/{team}', [InventoriController::class, 'create'])->name('inventori.create');
+Route::post('inventori/create/store', [InventoriController::class, 'store'])->name('inventori.store');
+Route::delete('inventori/delete/{inventori}', [InventoriController::class, 'destroy'])->name('inventori.destroy');
+Route::get('inventori/edit/{inventori}', [InventoriController::class, 'edit'])->name('inventori.edit');
+Route::put('inventori/update/{inventori}', [InventoriController::class, 'update'])->name('inventori.update');
+
+
 Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('auth', [AuthController::class, 'customLogin'])->name('auth');
+Route::get('logout', [AuthController::class, 'signout'])->name('logout');
 
-use App\Http\Controllers\UserController;
 Route::get('user', [UserController::class, 'index'])->name('user.index');
 Route::get('user/{tempat}', [UserController::class, 'index2'])->name('user.index2');
 Route::get('user/create/{tempat}', [UserController::class, 'create'])->name('user.create');
@@ -38,7 +53,7 @@ Route::delete('user/delete/{user}', [UserController::class, 'destroy'])->name('u
 Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 Route::put('user/update/{user}', [UserController::class, 'update'])->name('user.update');
 
-use App\Http\Controllers\TeamController;
+
 Route::get('team', [TeamController::class, 'index'])->name('team.index');
 Route::get('team/{tempat}', [TeamController::class, 'index2'])->name('team.index2');
 Route::get('team/create/{tempat}', [TeamController::class, 'create'])->name('team.create');

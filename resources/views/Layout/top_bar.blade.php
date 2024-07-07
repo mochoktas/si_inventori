@@ -15,7 +15,13 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="/login">login</a></li>
+                    @if (Auth::check())
+                        <li><a href="/backend">dashboard</a></li>
+                        <li><a href="/logout">logout</a></li>
+                    @else
+                        <li><a href="/login">login</a></li>
+                    @endif
+                    
                     <!-- #END# Call Search -->
                     <!-- Notifications -->
                     

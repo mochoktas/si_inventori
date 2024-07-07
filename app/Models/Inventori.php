@@ -14,9 +14,12 @@ class Inventori extends Model
     protected $primaryKey = 'inventori_id';
 
     protected $fillable = [
-        'tempat_id',
+        'team_id',
         'barang_id',
-        'stok'
+        'kondisi',
+        'sn',
+        'merk',
+        'tahun_pembelian'
     ];
 
     public function team(): BelongsTo

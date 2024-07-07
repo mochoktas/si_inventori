@@ -1,7 +1,7 @@
 @extends('layout.main')
 
-@section('title_page','Team')
-@section('title','Team')
+@section('title_page','Inventori')
+@section('title','Pilih Team')
 @section('content')
         @session('success')
             <div class="alert alert-success" role="alert">
@@ -9,24 +9,7 @@
             </div>
         @endsession
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Data Team
-                            </h2>
-                            <ul class="header-dropdown m-r-0">
-								<li>
-									<a href="{{ route('team.create', $tempat->tempat_id) }}">
-										<i class="material-icons">add</i>
-									</a>
-								</li>
-                                
-							</ul>
-                        </div>
-                        
-                    </div>
-                </div>
+                
             
                 @forelse($team as $data)
                 
@@ -41,13 +24,8 @@
                             </h2>
                             <ul class="header-dropdown m-r-0">
                                 <li>
-                                    <a href="{{ route('team.index2', $data->team_id) }}">
-                                        <i class="material-icons">add</i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('team.index2', $data->team_id) }}">
-                                        <i class="material-icons">add</i>
+                                    <a href="{{ route('inventori.index3', $data->team_id) }}">
+                                        <i class="material-icons">info</i>
                                     </a>
                                 </li>
                             </ul>

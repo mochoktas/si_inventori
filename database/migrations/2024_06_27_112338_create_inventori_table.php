@@ -17,10 +17,10 @@ return new class extends Migration
             $table->foreign('barang_id')->references('barang_id')->on('barang')->onDelete('cascade');
             $table->bigInteger('team_id');
             $table->foreign('team_id')->references('team_id')->on('team')->onDelete('cascade');
-            $table->string('kondisi', length: 20)->nullable();
+            $table->string('kondisi', length: 20);
             $table->string('sn', length: 100)->nullable();
             $table->string('merk', length: 100)->nullable();
-            $table->date('tahun_pembelian')->nullable();
+            $table->string('tahun_pembelian', length: 4)->nullable();
         });
     }
 
