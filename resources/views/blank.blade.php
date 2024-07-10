@@ -1,6 +1,6 @@
 @extends('layout.main_front')
 
-@section('title_page','SI Inventori')
+@section('title_page','Monitoring Inventori')
 
 @section('content')
 				
@@ -13,7 +13,7 @@
 									@forelse($tempat as $data)
                                     <div class="item {{($loop->iteration==1)? 'active':''}}">
 										<div class="align-center">
-											<a href="/backend">
+											<a href="{{ route('tempat.inventori', $data->tempat_id) }}">
                                         	<img src="{{asset($data->image)}}" height="800px"/>
 											</a>
 										</div>

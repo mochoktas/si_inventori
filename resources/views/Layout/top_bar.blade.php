@@ -16,7 +16,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
                     @if (Auth::check())
-                        <li><a href="/backend">dashboard</a></li>
+                        <li><a href="/profile">dashboard</a></li>
                         <li><a href="/logout">logout</a></li>
                     @else
                         <li><a href="/login">login</a></li>

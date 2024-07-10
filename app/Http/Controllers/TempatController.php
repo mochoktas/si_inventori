@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tempat;
+use App\Models\Team;
+use App\Models\Inventori;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +28,37 @@ class TempatController extends Controller
         //
         $tempat = Tempat::all();
         return view('blank',compact('tempat'));
+    }
+
+    public function tempat_inventori(Tempat $tempat)
+    {
+        //
+        $team = Team::where('tempat_id',$tempat->tempat_id)->get();
+        // dd($team);
+        $inv = [];
+        foreach ($team as $data) {
+            $total = Inventori::where('team_id',$data->team_id)->count();
+            $rusak = Inventori::where('team_id',$data->team_id)->whereNot('kondisi','Rusak')->count();
+            $inv[] = [
+                'total' => $total,
+                'saat_ini' => $rusak,
+                'team_id' => $data->team_id,
+                'nama' => $data->nama, 
+            ];
+        }
+        $json = json_encode($inv);
+        $arr = json_decode($json);
+        // foreach ($arr as $key => $value) {
+        //     dd($value->total);
+        // }
+        $barang = Inventori::select('barang_id', DB::raw('count(*) as total'))
+        ->join('team', 'inventori.team_id', '=', 'team.team_id')
+        ->where('kondisi', "Rusak")
+        ->where('team.tempat_id', $tempat->tempat_id)
+        ->groupBy('barang_id')
+        ->get();
+        // dd($barang);
+        return view('tempat.index_front',compact('arr','barang'));
     }
     /**
      * Show the form for creating a new resource.

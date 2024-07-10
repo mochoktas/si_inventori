@@ -13,53 +13,71 @@ use App\Http\Controllers\TeamController;
 // });
 
 // test back end
-Route::get('/backend', function () {
-    return view('blank2');
-});
+
 // Route::get('/login', function () {
 //     return view('Auth.login');
 // });
 
 // controller resource
 
-Route::resource('barang', BarangController::class);
 
 
-Route::resource('tempat', TempatController::class);
+
+
 Route::get('/', [TempatController::class, 'index2'])->name('dashboard');
+Route::get('tempat/inventori/{tempat}', [TempatController::class, 'tempat_inventori'])->name('tempat.inventori');
 // Route::get('/', [TempatController::class, 'index2']);
 
 
 // Route::resource('inventori', InventoriController::class);
-Route::get('inventori', [InventoriController::class, 'index'])->name('inventori.index');
-Route::get('inventori/{tempat}', [InventoriController::class, 'index2'])->name('inventori.index2');
-Route::get('inventori/team/{team}', [InventoriController::class, 'index3'])->name('inventori.index3');
-Route::get('inventori/create/{team}', [InventoriController::class, 'create'])->name('inventori.create');
-Route::post('inventori/create/store', [InventoriController::class, 'store'])->name('inventori.store');
-Route::delete('inventori/delete/{inventori}', [InventoriController::class, 'destroy'])->name('inventori.destroy');
-Route::get('inventori/edit/{inventori}', [InventoriController::class, 'edit'])->name('inventori.edit');
-Route::put('inventori/update/{inventori}', [InventoriController::class, 'update'])->name('inventori.update');
+
 
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('auth', [AuthController::class, 'customLogin'])->name('auth');
-Route::get('logout', [AuthController::class, 'signout'])->name('logout');
-
-Route::get('user', [UserController::class, 'index'])->name('user.index');
-Route::get('user/{tempat}', [UserController::class, 'index2'])->name('user.index2');
-Route::get('user/create/{tempat}', [UserController::class, 'create'])->name('user.create');
-Route::post('user/create/store', [UserController::class, 'store'])->name('user.store');
-Route::delete('user/delete/{user}', [UserController::class, 'destroy'])->name('user.destroy');
-Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
-Route::put('user/update/{user}', [UserController::class, 'update'])->name('user.update');
 
 
-Route::get('team', [TeamController::class, 'index'])->name('team.index');
-Route::get('team/{tempat}', [TeamController::class, 'index2'])->name('team.index2');
-Route::get('team/create/{tempat}', [TeamController::class, 'create'])->name('team.create');
-Route::post('team/create/store', [TeamController::class, 'store'])->name('team.store');
-Route::delete('team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
-Route::get('team/edit/{team}', [TeamController::class, 'edit'])->name('team.edit');
-Route::put('team/update/{team}', [TeamController::class, 'update'])->name('team.update');
+
+
+
+
 // Route::get('/getUser',[TeamController::class,'getUser'])->name('getUser');
 
+// middleware auth
+Route::middleware(['auth'])->group(function () {
+    Route::get('/backend', function () {
+        return view('blank2');
+    });
+
+    Route::get('logout', [AuthController::class, 'signout'])->name('logout');
+
+    Route::resource('barang', BarangController::class);
+
+    Route::resource('tempat', TempatController::class);
+
+    Route::get('inventori', [InventoriController::class, 'index'])->name('inventori.index');
+    Route::get('inventori/{tempat}', [InventoriController::class, 'index2'])->name('inventori.index2');
+    Route::get('inventori/team/{team}', [InventoriController::class, 'index3'])->name('inventori.index3');
+    Route::get('inventori/create/{team}', [InventoriController::class, 'create'])->name('inventori.create');
+    Route::post('inventori/create/store', [InventoriController::class, 'store'])->name('inventori.store');
+    Route::delete('inventori/delete/{inventori}', [InventoriController::class, 'destroy'])->name('inventori.destroy');
+    Route::get('inventori/edit/{inventori}', [InventoriController::class, 'edit'])->name('inventori.edit');
+    Route::put('inventori/update/{inventori}', [InventoriController::class, 'update'])->name('inventori.update');
+
+    Route::get('user', [UserController::class, 'index'])->name('user.index');
+    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('user/{tempat}', [UserController::class, 'index2'])->name('user.index2');
+    Route::get('user/create/{tempat}', [UserController::class, 'create'])->name('user.create');
+    Route::post('user/create/store', [UserController::class, 'store'])->name('user.store');
+    Route::delete('user/delete/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('user/update/{user}', [UserController::class, 'update'])->name('user.update');
+
+    Route::get('team', [TeamController::class, 'index'])->name('team.index');
+    Route::get('team/{tempat}', [TeamController::class, 'index2'])->name('team.index2');
+    Route::get('team/create/{tempat}', [TeamController::class, 'create'])->name('team.create');
+    Route::post('team/create/store', [TeamController::class, 'store'])->name('team.store');
+    Route::delete('team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
+    Route::get('team/edit/{team}', [TeamController::class, 'edit'])->name('team.edit');
+    Route::put('team/update/{team}', [TeamController::class, 'update'])->name('team.update');
+});

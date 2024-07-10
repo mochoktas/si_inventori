@@ -5,8 +5,8 @@
                     <img src="{{asset('assets/images/lgo.jpg')}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->nama }}</div>
+                    <div class="email">{{ Auth::user()->email_pribadi }}</div>
                     
                 </div>
             </div>
@@ -15,12 +15,14 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="{{request ()->is('backend') ? 'active' :'' }}">
-                        <a href="/backend">
+                    <li class="{{request ()->is('profile') ? 'active' :'' }}">
+                        <a href="/profile">
                             <i class="material-icons">home</i>
                             <span>Beranda</span>
                         </a>
                     </li>
+                    @if (Auth::check() && Auth::user()->role == '0')
+
                     <li class="{{request ()->is('tempat') ? 'active' :'' }}">
                         <a href="/tempat">
                             <i class="material-icons">place</i>
@@ -51,6 +53,7 @@
                             <span>Inventori</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
             <!-- #Menu -->

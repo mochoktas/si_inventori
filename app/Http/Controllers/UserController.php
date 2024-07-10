@@ -21,6 +21,11 @@ class UserController extends Controller
         return view('user.index',compact('tempat'));
     }
 
+    public function profile()
+    {
+        return view('user.profile');
+    }
+
     public function index2(Tempat $tempat)
     {
         //
