@@ -31,7 +31,7 @@
                                             <td>{{$data->total}}</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar {{ ($data->total == $data->saat_ini) ? "bg-green" : "bg-red" }}" role="progressbar" aria-valuenow="{{$data->saat_ini}}" aria-valuemin="0" aria-valuemax="{{$data->total}}" style="width: {{($data->saat_ini)/($data->total)*100}}%"></div>
+                                                    <div class="progress-bar {{ (($data->saat_ini)/($data->total)*100 > 50) ? "bg-green" : "bg-red" }}" role="progressbar" aria-valuenow="{{$data->saat_ini}}" aria-valuemin="0" aria-valuemax="{{$data->total}}" style="width: {{($data->saat_ini)/($data->total)*100}}%"></div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -53,10 +53,18 @@
                         <div class="body bg-blue">
                             <div class="font-bold m-b--35">Top Peralatan Yang Rusak</div>
                             <ul class="dashboard-stat-list">
-                                @forelse($barang as $data)
+                                @forelse($arr2 as $data)
                                 <li>
-                                    {{$data->barang->nama}}
-                                    <span class="pull-right"><b>{{$data->total}}</b> <small>Rusak</small></span>
+                                    {{$data->nama}}
+                                    <span class="pull-right">
+                                        <b>
+                                        @forelse($data->tim as $tim)
+                                            {{$tim->team}}
+                                        @empty
+                                            data tidak ada
+                                        @endforelse
+                                        </b>
+                                    </span>
                                 </li>
                                 @empty
                     	            <div class="alert alert-danger">

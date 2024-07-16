@@ -17,7 +17,7 @@
 							</ul>
                         </div>
                         <div class="body">
-                            <form id="tempat" action="{{ route('tempat.update',$tempat->tempat_id) }}" method="POST">
+                            <form id="tempat" action="{{ route('tempat.update',$tempat->tempat_id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method("PUT")
                                 <div class="form-group form-float">

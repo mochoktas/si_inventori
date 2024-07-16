@@ -48,6 +48,7 @@ class TempatController extends Controller
         }
         $json = json_encode($inv);
         $arr = json_decode($json);
+        // dd($arr);
         // foreach ($arr as $key => $value) {
         //     dd($value->total);
         // }
@@ -57,8 +58,26 @@ class TempatController extends Controller
         ->where('team.tempat_id', $tempat->tempat_id)
         ->groupBy('barang_id')
         ->get();
-        // dd($barang);
-        return view('tempat.index_front',compact('arr','barang'));
+        $brg = [];
+        foreach ($barang as $data) {
+            $team2 = Inventori::where('kondisi', "Rusak")
+            ->where('barang_id',$data->barang->barang_id)
+            ->get();
+            $arrtim = [];
+            foreach ($team2 as $tim) {
+                $arrtim[] = [
+                    'team' => $tim->team->nama,
+                ];
+            }
+            $brg[] = [
+                'nama' => $data->barang->nama, 
+                'tim' => $arrtim,
+            ];
+        }
+        $json2 = json_encode($brg);
+        $arr2 = json_decode($json2);
+        // dd($arr2);
+        return view('tempat.index_front',compact('arr','arr2'));
     }
     /**
      * Show the form for creating a new resource.
@@ -131,8 +150,11 @@ class TempatController extends Controller
     public function update(Request $request, Tempat $tempat)
     {
         //
+        // dd($request);
         if ($request->image != "") {
-            $filedeleted = unlink(public_path($tempat->image));
+            if ($tempat->image != "") {
+                $filedeleted = unlink(public_path($tempat->image));
+            }
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('images'), $imageName);
             $tempat->image = 'images/'.$imageName;
@@ -150,7 +172,9 @@ class TempatController extends Controller
     public function destroy(Tempat $tempat)
     {
         //
-        $filedeleted = unlink(public_path($tempat->image));
+        if ($tempat->image != "") {
+            $filedeleted = unlink(public_path($tempat->image));
+        }
         $tempat->delete();
 
         return redirect()->route('tempat.index')->withSuccess('data berhasil dihapus');

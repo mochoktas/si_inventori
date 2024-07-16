@@ -14,7 +14,7 @@
                                     <div class="item {{($loop->iteration==1)? 'active':''}}">
 										<div class="align-center">
 											<a href="{{ route('tempat.inventori', $data->tempat_id) }}">
-                                        	<img src="{{asset($data->image)}}" height="800px"/>
+                                        	<img src="{{asset($data->image)}}" height="600px"/>
 											</a>
 										</div>
                                         <div class="carousel-caption">

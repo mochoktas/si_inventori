@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data User
+                                Data User {{$tempat->nama}}
                             </h2>
                             <ul class="header-dropdown m-r-0">
 								<li>

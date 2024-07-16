@@ -49,13 +49,22 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
         $request->validate([
             'nama' => 'required',
             'email_pribadi' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-        $tgl_lahir2 = date('Y-m-d', strtotime($request->tgl_lahir));
-        $tgl_masuk2 = date('Y-m-d', strtotime($request->tgl_masuk));
+        if ($request->tgl_lahir != "") {
+            $tgl_lahir2 = date('Y-m-d', strtotime($request->tgl_lahir));
+        }else {
+            $tgl_lahir2 = null;
+        }
+        if ($request->tgl_masuk != "") {
+            $tgl_masuk2 = date('Y-m-d', strtotime($request->tgl_masuk));
+        }else {
+            $tgl_masuk2 = null;
+        }
         // dd($tgl_lahir2);
         if ($request->role == "") {
             $role = 1;
@@ -122,8 +131,17 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
-        $tgl_lahir2 = date('Y-m-d', strtotime($request->tgl_lahir));
-        $tgl_masuk2 = date('Y-m-d', strtotime($request->tgl_masuk));
+        if ($request->tgl_lahir != "") {
+            $tgl_lahir2 = date('Y-m-d', strtotime($request->tgl_lahir));
+        }else {
+            $tgl_lahir2 = null;
+        }
+        if ($request->tgl_masuk != "") {
+            $tgl_masuk2 = date('Y-m-d', strtotime($request->tgl_masuk));
+        }else {
+            $tgl_masuk2 = null;
+        }
+        
         $user->nama = $request->nama;
         if ($request->password != "") {
             $user->password = Hash::make($request->password);

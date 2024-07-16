@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         DB::table('tempat')->insert([
-            'nama' => 'admin',
+            'nama' => 'STO Bangkalan',
         ]);
         DB::table('users')->insert([
             'nama' => 'admin',
