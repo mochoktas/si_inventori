@@ -47,13 +47,21 @@
                             <span>Barang</span>
                         </a>
                     </li>
+                    
+                    @else
+                    <li class="{{request ()->is('gaji') ? 'active' :'' }}">
+                        <a href="/gaji">
+                            <i class="material-icons">attach_money</i>
+                            <span>Gaji</span>
+                        </a>
+                    </li>
+                    @endif
                     <li class="{{request ()->is('inventori') ? 'active' :'' }}">
                         <a href="/inventori">
                             <i class="material-icons">account_balance</i>
                             <span>Inventori</span>
                         </a>
                     </li>
-                    @endif
                 </ul>
             </div>
             <!-- #Menu -->

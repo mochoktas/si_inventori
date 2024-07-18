@@ -1,7 +1,7 @@
 @extends('layout.main')
 
-@section('title_page','User')
-@section('title','User')
+@section('title_page','Gaji')
+@section('title','Gaji')
 @section('content')
         @session('success')
             <div class="alert alert-success" role="alert">
@@ -13,11 +13,11 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data User {{$tempat->nama}}
+                                Data Gaji
                             </h2>
                             <ul class="header-dropdown m-r-0">
 								<li>
-									<a href="{{ route('user.create', $tempat->tempat_id) }}">
+									<a href="{{ route('gaji.create', $user->id) }}">
 										<i class="material-icons">add</i>
 									</a>
 								</li>
@@ -28,23 +28,22 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Email Pribadi</th>
+                                        <th>Tanggal</th>
+                                        <th>Gaji</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($user as $data)
+                                    @forelse($gaji as $data)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->email_pribadi }}</td>
+                                        <td>{{ date("M-Y",strtotime($data->tanggal_gaji)) }}</td>
+                                        <td>{{ $data->gaji }}</td>
                                         <td>
-                                            <form action="{{ route('user.destroy', $data->id) }}" method="post">
+                                            <form action="{{ route('gaji.destroy', $data->gaji_id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('gaji.index', $data->id) }}" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Gaji</a>
-                                                <a href="{{ route('user.edit', $data->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>   
+                                                <a href="{{ route('gaji.edit', $data->gaji_id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>   
 
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this product?');"><i class="bi bi-trash"></i> Delete</button>
                                             </form>

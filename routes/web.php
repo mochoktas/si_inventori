@@ -7,6 +7,7 @@ use App\Http\Controllers\TempatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\GajiController;
 // test front end
 // Route::get('/', function () {
 //     return view('blank');
@@ -45,12 +46,19 @@ Route::post('auth', [AuthController::class, 'customLogin'])->name('auth');
 
 // middleware auth
 Route::middleware(['auth'])->group(function () {
+
+    // all role
     Route::get('/backend', function () {
         return view('blank2');
     });
 
     Route::get('logout', [AuthController::class, 'signout'])->name('logout');
+    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+});
 
+Route::middleware(['auth','isAdmin'])->group(function () {
+
+    // role admin
     Route::resource('barang', BarangController::class);
 
     Route::resource('tempat', TempatController::class);
@@ -65,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('inventori/update/{inventori}', [InventoriController::class, 'update'])->name('inventori.update');
 
     Route::get('user', [UserController::class, 'index'])->name('user.index');
-    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    
     Route::get('user/{tempat}', [UserController::class, 'index2'])->name('user.index2');
     Route::get('user/create/{tempat}', [UserController::class, 'create'])->name('user.create');
     Route::post('user/create/store', [UserController::class, 'store'])->name('user.store');
@@ -80,4 +88,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
     Route::get('team/edit/{team}', [TeamController::class, 'edit'])->name('team.edit');
     Route::put('team/update/{team}', [TeamController::class, 'update'])->name('team.update');
+
+    Route::get('gaji/{user}', [GajiController::class, 'index'])->name('gaji.index');
+    Route::get('gaji/create/{user}', [GajiController::class, 'create'])->name('gaji.create');
+    Route::post('gaji/create/store', [GajiController::class, 'store'])->name('gaji.store');
+    Route::delete('gaji/delete/{gaji}', [GajiController::class, 'destroy'])->name('gaji.destroy');
+    Route::get('gaji/edit/{gaji}', [GajiController::class, 'edit'])->name('gaji.edit');
+    Route::put('gaji/update/{gaji}', [GajiController::class, 'update'])->name('gaji.update');
+
+    
 });

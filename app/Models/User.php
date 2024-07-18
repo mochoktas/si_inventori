@@ -77,4 +77,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Tempat::class, 'tempat_id', 'tempat_id');
     }
+    public function gaji(): HasMany
+    {
+        return $this->hasMany(Gaji::class);
+    }
 }
