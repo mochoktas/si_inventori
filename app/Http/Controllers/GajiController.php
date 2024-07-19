@@ -15,8 +15,18 @@ class GajiController extends Controller
     public function index(User $user)
     {
         //
-        $gaji = Gaji::where('user_id',$user->id)->orderBy('tanggal_gaji','desc')->get();
-        return view('gaji.index',compact('gaji','user'));
+        if (Auth::user()->role == 0) {
+            $gaji = Gaji::where('user_id',$user->id)->orderBy('tanggal_gaji','desc')->get();
+            return view('gaji.index',compact('gaji','user'));
+        }else {
+            $gaji = Gaji::where('user_id',Auth::user()->id)->orderBy('tanggal_gaji','desc')->get();
+            // dd($gaji);
+            if ($gaji != "") {
+                return view('gaji.index_user',compact('gaji'));
+            }else {
+                abort(403);
+            }
+        }
     }
 
     /**

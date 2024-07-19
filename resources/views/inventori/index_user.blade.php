@@ -1,7 +1,7 @@
 @extends('layout.main')
 
-@section('title_page','STO')
-@section('title','STO')
+@section('title_page','Inventori')
+@section('title','')
 @section('content')
         @session('success')
             <div class="alert alert-success" role="alert">
@@ -13,14 +13,11 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data STO
+                                Data Inventori {{ $team->nama }}
                             </h2>
                             <ul class="header-dropdown m-r-0">
-								<li>
-									<a href="{{ route('tempat.create') }}">
-										<i class="material-icons">add</i>
-									</a>
-								</li>
+								
+                                
 							</ul>
                         </div>
                         <div class="body table-responsive">
@@ -28,26 +25,23 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
-                                        <th>Action</th>
+                                        <th>Nama Barang</th>
+                                        <th>Kondisi</th>
+                                        <th>Serial Number</th>
+                                        <th>Merk</th>
+                                        <th>Tahun Pembelian</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($tempat as $data)
+                                    @forelse($inventori as $data2)
                                     <tr>
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{ $data->nama }}</td>
-                                        <td>{{ $data->alamat }}</td>
-                                        <td>
-                                            <form action="{{ route('tempat.destroy', $data->tempat_id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a href="{{ route('tempat.edit', $data->tempat_id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>   
-
-                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this product?');"><i class="bi bi-trash"></i> Delete</button>
-                                            </form>
-                                        </td>
+                                        <td>{{ $data2->barang->nama }}</td>
+                                        <td bgcolor="{{ ($data2->kondisi == "Rusak") ? "Red" : "" }}" >{{ $data2->kondisi }}</td>
+                                        <td>{{ $data2->sn }}</td>
+                                        <td>{{ $data2->merk }}</td>
+                                        <td>{{ $data2->tahun_pembelian }}</td>
+                                        
                                     </tr>
                                     @empty
                     	                <div class="alert alert-danger">
@@ -60,5 +54,8 @@
                         </div>
                     </div>
                 </div>
+            
+                
             </div>
+            
 @endsection

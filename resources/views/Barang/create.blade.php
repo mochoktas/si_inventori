@@ -1,14 +1,14 @@
 @extends('layout.main')
 
-@section('title_page','Barang')
-@section('title','Barang')
+@section('title_page','Alat Kerja')
+@section('title','Alat Kerja')
 @section('content')
 
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Buat Barang</h2>
+                            <h2>Buat Alat Kerja</h2>
                             <ul class="header-dropdown m-r-0">
 								<li>
 									<a href="{{ route('barang.index') }}">

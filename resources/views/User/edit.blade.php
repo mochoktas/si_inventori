@@ -1,13 +1,13 @@
 @extends('layout.main')
 
-@section('title_page','User')
-@section('title','User')
+@section('title_page','Teknisi')
+@section('title','Teknisi')
 @section('content')
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Edit User</h2>
+                            <h2>Edit Teknisi</h2>
                             <ul class="header-dropdown m-r-0">
 								<li>
 									<a href="{{ route('user.index2',$user->tempat_id) }}">

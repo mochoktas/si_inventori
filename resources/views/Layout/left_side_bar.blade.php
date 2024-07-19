@@ -26,13 +26,13 @@
                     <li class="{{request ()->is('tempat') ? 'active' :'' }}">
                         <a href="/tempat">
                             <i class="material-icons">place</i>
-                            <span>Tempat</span>
+                            <span>STO</span>
                         </a>
                     </li>
                     <li class="{{request ()->is('user') ? 'active' :'' }}">
                         <a href="/user">
                             <i class="material-icons">person</i>
-                            <span>User</span>
+                            <span>Teknisi</span>
                         </a>
                     </li>
                     <li class="{{request ()->is('team') ? 'active' :'' }}">
@@ -44,7 +44,7 @@
                     <li class="{{request ()->is('barang') ? 'active' :'' }}">
                         <a href="/barang">
                             <i class="material-icons">event_seat</i>
-                            <span>Barang</span>
+                            <span>Alat Kerja</span>
                         </a>
                     </li>
                     

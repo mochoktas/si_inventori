@@ -1,7 +1,7 @@
 @extends('layout.main')
 
-@section('title_page','User')
-@section('title','User')
+@section('title_page','Teknisi')
+@section('title','Teknisi')
 @section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -16,7 +16,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Buat User</h2>
+                            <h2>Buat Teknisi</h2>
                             <ul class="header-dropdown m-r-0">
 								<li>
 									<a href="{{ route('user.index2',$tempat->tempat_id) }}">

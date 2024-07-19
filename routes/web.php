@@ -54,6 +54,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('logout', [AuthController::class, 'signout'])->name('logout');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::get('inventori', [InventoriController::class, 'index'])->name('inventori.index');
+    Route::get('gaji', [GajiController::class, 'index'])->name('gaji.index_user');
 });
 
 Route::middleware(['auth','isAdmin'])->group(function () {
@@ -63,7 +65,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     Route::resource('tempat', TempatController::class);
 
-    Route::get('inventori', [InventoriController::class, 'index'])->name('inventori.index');
+    
     Route::get('inventori/{tempat}', [InventoriController::class, 'index2'])->name('inventori.index2');
     Route::get('inventori/team/{team}', [InventoriController::class, 'index3'])->name('inventori.index3');
     Route::get('inventori/create/{team}', [InventoriController::class, 'create'])->name('inventori.create');

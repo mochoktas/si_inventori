@@ -15,7 +15,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (\Auth::user()->role_id != 1) {
+        if (\Auth::user()->role != 0) {
             abort(403, 'Unauthorized action.');
         }
         return $next($request);

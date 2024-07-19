@@ -1,7 +1,7 @@
 @extends('layout.main')
 
-@section('title_page','User')
-@section('title','User')
+@section('title_page','Teknisi')
+@section('title','Teknisi')
 @section('content')
         @session('success')
             <div class="alert alert-success" role="alert">
@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Data User {{$tempat->nama}}
+                                Data Teknisi {{$tempat->nama}}
                             </h2>
                             <ul class="header-dropdown m-r-0">
 								<li>

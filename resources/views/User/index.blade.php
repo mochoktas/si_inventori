@@ -1,7 +1,7 @@
 @extends('layout.main')
 
-@section('title_page','User')
-@section('title','Pilih Tempat')
+@section('title_page','Teknisi')
+@section('title','Pilih STO')
 @section('content')
         @session('success')
             <div class="alert alert-success" role="alert">

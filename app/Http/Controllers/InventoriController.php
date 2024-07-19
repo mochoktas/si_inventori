@@ -8,6 +8,8 @@ use App\Models\Barang;
 use App\Models\Inventori;
 use App\Models\Team;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 class InventoriController extends Controller
 {
     /**
@@ -16,8 +18,20 @@ class InventoriController extends Controller
     public function index()
     {
         //
-        $tempat = Tempat::all();
-        return view('inventori.index',compact('tempat'));
+        if (Auth::user()->role == 0) {
+            $tempat = Tempat::all();
+            return view('inventori.index',compact('tempat'));
+        }else {
+            
+            $team = Team::where('user_id_1',Auth::user()->id)->orWhere('user_id_2',Auth::user()->id)->first();
+            // dd($team);
+            if ($team != "") {
+                $inventori = Inventori::where('team_id',$team->team_id)->get();
+                return view('inventori.index_user',compact('team','inventori'));
+            }else {
+                abort(403);
+            }
+        }
     }
 
     public function index2(Tempat $tempat)
