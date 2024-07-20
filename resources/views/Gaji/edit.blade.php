@@ -40,7 +40,6 @@
                                     <div class="col-sm-6">
                                         
                                         <select class="form-control show-tick" name="bulan" id="bulan" required >
-                                            <option value="">-- Pilih Bulan --</option>
                                             <option value="01" {{ (date("m",strtotime($gaji->tanggal_gaji)) == "01" ) ? "selected" : "" }}>Januari</option>
                                             <option value="02" {{ (date("m",strtotime($gaji->tanggal_gaji)) == "02" ) ? "selected" : "" }}>Februari</option>
                                             <option value="03" {{ (date("m",strtotime($gaji->tanggal_gaji)) == "03" ) ? "selected" : "" }}>Maret</option>

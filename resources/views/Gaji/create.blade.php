@@ -39,7 +39,6 @@
                                     <div class="col-sm-6">
                                         
                                         <select class="form-control show-tick" name="bulan" id="bulan" required >
-                                            <option value="">-- Pilih Bulan --</option>
                                             <option value="01" {{ (date("m") == "01" ) ? "selected" : "" }}>Januari</option>
                                             <option value="02" {{ (date("m") == "02" ) ? "selected" : "" }}>Februari</option>
                                             <option value="03" {{ (date("m") == "03" ) ? "selected" : "" }}>Maret</option>

@@ -97,6 +97,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::delete('gaji/delete/{gaji}', [GajiController::class, 'destroy'])->name('gaji.destroy');
     Route::get('gaji/edit/{gaji}', [GajiController::class, 'edit'])->name('gaji.edit');
     Route::put('gaji/update/{gaji}', [GajiController::class, 'update'])->name('gaji.update');
+    Route::post('gaji/print', [GajiController::class, 'print'])->name('gaji.print');
 
     
 });

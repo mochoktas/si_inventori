@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Gaji;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class GajiController extends Controller
 {
@@ -54,6 +55,17 @@ class GajiController extends Controller
         ]);
 
         return redirect()->route('gaji.index', $request->user_id)->withSuccess('data berhasil ditambah');
+    }
+    public function print(Request $request)
+    {
+        // dd($request);
+        $tanggal_gaji1 = $request->tahun1."-".$request->bulan1."-01";
+        $tanggal_gaji2 = $request->tahun2."-".$request->bulan2."-01";
+        $user = User::where('id',$request->user_id)->first();
+        $gaji = Gaji::where('user_id',$request->user_id)->whereBetween('tanggal_gaji',[$tanggal_gaji1,$tanggal_gaji2])->get() ;
+        // dd($gaji);
+        $pdf = PDF::loadView('gaji.pdf', compact('user','gaji'));
+        return $pdf->download('gaji.pdf');
     }
 
     /**
